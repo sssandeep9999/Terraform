@@ -19,15 +19,15 @@ module "vpc" {
   cluster_name         = var.cluster_name
 }
 
-# module "eks" {
-#   source = "./modules/eks"
+module "eks" {
+  source = "./modules/eks"
 
-#   cluster_name    = var.cluster_name
-#   cluster_version = var.cluster_version
-#   vpc_id          = module.vpc.vpc_id
-#   subnet_ids      = module.vpc.private_subnet_ids
-#   node_groups     = var.node_groups
-# }
+  cluster_name    = var.cluster_name
+  cluster_version = var.cluster_version
+  vpc_id          = module.vpc.vpc_id
+  subnet_ids      = module.vpc.private_subnet_ids
+  node_groups     = var.node_groups
+}
 
 module "iam" {
   source = "./modules/iam"
