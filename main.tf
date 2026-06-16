@@ -4,8 +4,9 @@ terraform {
     bucket         = "demo-terraform-eks-state-s3-bucket-9"
     key            = "terraform.tfstate"
     region         = "ap-south-1"
-    dynamodb_table = "terraform-eks-state-locks"
-    encrypt        = true
+    # dynamodb_table = "terraform-eks-state-locks"
+    # encrypt        = true
+    use_lockfile = true
   }
 }
 
@@ -40,7 +41,7 @@ module "ec2" {
   aws_region    = var.aws_region
   ami_id        = var.ami_id
   instance_type = var.instance_type
-  subnet_id     = module.vpc.public_subnet_ids[0]
+  subnet_id     = module.vpc.public_subnet_ids[2]
   instance_name = var.instance_name
 
   iam_instance_profile = module.iam.instance_profile_name # This takes the output from the IAM module and passes it to the EC2 module.
