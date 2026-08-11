@@ -41,7 +41,7 @@ module "ec2" {
   aws_region    = var.aws_region
   ami_id        = var.ami_id
   instance_type = var.instance_type
-  subnet_id     = module.vpc.public_subnet_ids[2]
+  subnet_id     = module.vpc.public_subnet_ids[0]
   instance_name = var.instance_name
 
   iam_instance_profile = module.iam.instance_profile_name # This takes the output from the IAM module and passes it to the EC2 module.
